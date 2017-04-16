@@ -2,7 +2,6 @@ import os
 import random
 import hashlib
 import flask
-import peewee
 from PIL import Image
 
 app = flask.Flask(__name__)
