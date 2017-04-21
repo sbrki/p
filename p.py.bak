@@ -5,12 +5,11 @@ import flask
 from PIL import Image
 
 app = flask.Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024 # 30 megabytes
-app.config["BLOB_FOLDER"] = "IMAGES" # Name of the LOCAL folder 
-									 # in which images are saved.
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 30 megabytes
+app.config["BLOB_FOLDER"] = "IMAGES"  # Name of the LOCAL folder for images
 
 
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
 	if flask.request.method == "GET":
 		return flask.render_template("index.html")
@@ -44,16 +43,10 @@ def index():
 
 		return flask.redirect(flask.url_for("image",image_id = name+".jpg"))
 
-		
 
-	
 @app.route("/<string:image_id>")
 def image(image_id):
 	return flask.send_file(os.path.join(app.config["BLOB_FOLDER"], image_id))
-
-
-
-
 
 
 if __name__ == "__main__":
