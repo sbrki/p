@@ -5,7 +5,7 @@ before_install:
     - python3 -V
     - sudo apt-get update
     - sudo apt-get install python3-setuptools
-    - sudo easy_install3 pip
+    - sudo easy_install3 pip3
 
 install:
      - sudo pip3 install -r requirements.txt
